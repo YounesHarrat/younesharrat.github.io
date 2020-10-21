@@ -1,0 +1,22 @@
+
+<div class="login">
+  <h1 class="logo text-center"> FireChatNG </h1>
+
+    <div class="d-flex flex-row" *ngIf="auth.user$ | async as user; else login">
+      <div class="center card-body bg-light">
+        <h3 class="text-center">Welcome to FireChatNG !!!</h3>
+        <hr>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+
+  <ng-template #login >
+
+    <div class="centerLog">
+      <h1 class="text-center">Welcome to FireChatNG !!!</h1>
+    </div>
+    <button type="button" class="btn btn-primary" name="button" (click)="auth.googleSignin()" >Login with Google</button>
+
+  </ng-template>
+
+</div>

@@ -1,0 +1,32 @@
+.bodyApp{
+  max-width: 60vw;
+}
+
+img{
+  border-radius: 150px;
+  width:8vw;
+  max-width: 100px;
+  margin:auto;
+}
+
+.btn-sm{
+  margin:5vh auto 5vh ;
+}
+
+.chatBtns{
+  margin-left:2vw;
+}
+
+.ChatListElement {
+  font-size: 1rem;
+  background-color: lightblue;
+  border: dashed 2px black;
+  margin:auto;
+  padding:10px;
+  width:auto;
+  min-width: 250px;
+}
+
+li {
+  list-style: none;
+}

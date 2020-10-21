@@ -1,0 +1,51 @@
+<div class="bodyApp text-center" *ngIf="auth.user$ | async as user" >
+  <div style="margin:auto;">
+    <img src="{{user.photoURL}}" alt="">
+    <h6> <b>Your ID :</b> {{user.uid}}</h6>
+  </div>
+  <button type="button" class="btn bg-dark" name="button" style="color:white;margin:auto;">{{user.displayName}}</button>
+  <hr>
+
+  <div class="flex-row d-flex text-center justify-content-center ">
+    <span *ngIf="joinChat ; else Join" >
+      <div class="form" >
+        <button type="button" name="button" class=" chatBtns btn bg-light" (click)="switch()" >Go Back</button>
+        <input
+            class="form-control" type="text"
+            [(ngModel)]="joinChatId"
+            (keydown.enter)="join()"
+            placeHolder="Type the ChatId you want to Join: send with Enter "
+            name="" value="">
+      </div>
+    </span>
+
+    <ng-template #Join>
+      <button type="button" name="button" class=" chatBtns btn bg-light" (click)="switch()" >Join FireChat</button>
+      <button type="button" name="button"  class="chatBtns btn btn-primary" (click)="cs.create()">Create FireChat</button>
+      <button type="button" name="button" class="chatBtns btn btn-danger" (click)="auth.signOut()">Sign Out</button>
+    </ng-template>
+
+  </div>
+  <hr>
+  <!-- Chat List the Authenticated User can Access -->
+  <h1><b>My Chats</b></h1>
+
+<div class="d-flex flex-row flex-wrap">
+  <ul *ngFor="let chat of chats | async " class="d-flex">
+    <!-- ancien *ngIf avec un seul owner *ngIf="chat.ownerId == user.uid" -->
+    <div class="ChatListElement" *ngIf="chat.ownersId.indexOf(user.uid) > -1">
+      <li>ChatID:<a [routerLink]="['/chats',chat.eventId]"> {{chat.eventId}}</a> </li>
+      <i>Created at : {{chat.createdAt | date:"medium"}}</i>
+      <span class="form" >
+        <input
+            class="form-control" type="text" style="border:solid;margin:auto;text-align:center;width:180px;"
+            [(ngModel)]="friendId" placeholder="add your friend ID" (keydown.enter)="addFriendToChat(chat.eventId)"
+            name="" value="" >
+      </span>
+    </div>
+  </ul>
+
+</div>
+
+
+</div>

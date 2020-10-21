@@ -1,0 +1,70 @@
+
+<div *ngIf="auth.user$ | async as user">
+  <div class="card-body bg-light">
+    <div class="d-flex flex-row justify-content-center">
+      <fa-icon [icon]="iconArrowLeft" style="font-size:2.33em;margin:0 4vw 0 6vw;" routerLink="/home"></fa-icon>
+      <h4 class="text-center" style="font-size:2.33em;margin:0 6vw 0 6vw;"> Command Panel </h4>
+      <fa-icon [icon]="iconTrashAlt" style="font-size:2.33em;margin:0 6vw 0 4vw;" (click)="deleteChat(chatId)"></fa-icon>
+    </div>
+    <hr>
+
+      <!-- system to change the chat css bg-color -->
+
+
+  </div>
+
+<div class="d-flex flex-row">
+  <ng-container *ngIf="chat$ | async as chats" class="chatContainer">
+    <div class="cmdP d-flex flex-row">
+      <div class="d-flex flex-column">
+        <h5 class="text-center">BG Color</h5>
+        <div class="btn colblock" style="background-color:#e6bbad" (click)="changeBGColor('#e6bbad')" ></div>
+        <div class="btn colblock" style="background-color:lightgreen" (click)="changeBGColor('lightgreen')"></div>
+        <div class="btn colblock" style="background-color:#2fd8e6" (click)="changeBGColor('#2fd8e6')"></div>
+        <div class="btn colblock" style="background-color:#2aa6d8" (click)="changeBGColor('#2aa6d8')" ></div>
+        <div class="btn colblock" style="background-color:#adbce6" (click)="changeBGColor('#adbce6')"></div>
+        <div class="btn colblock" style="background-color:#e6d8ad" (click)="changeBGColor('#e6d8ad')"></div>
+        <div class="btn colblock" style="background-color:#e6add8" (click)="changeBGColor('#e6add8')"></div>
+        <div class="btn colblock" style="background-color:white" (click)="changeBGColor('white')" ></div>
+        <div class="btn colblock" style="background-color:black" (click)="changeBGColor('black')"></div>
+
+      </div>
+
+        <!-- system to change the chat css text-color -->
+      <div class="d-flex flex-column">
+        <h5 class="text-center">Text Color</h5>
+
+        <div class="btn colblock" style="background-color:white" (click)="changeTextColor('white')" ></div>
+        <div class="btn colblock" style="background-color:black" (click)="changeTextColor('black')"></div>
+      </div>
+    </div>
+
+    <div *ngFor="let chat of chats">
+      <div *ngIf="chat.ownersId.indexOf(user.uid) > -1">
+        <!-- {{chat.eventId}} and {{chatId}} -->
+        <div *ngIf="chat.eventId == chatId" id="MyChat">
+          <div *ngFor="let msg of chat.messages " >
+            <div class="card-body container d-flex flex-row ">
+              <div class="text-break mes" [ngStyle]="{'background-color': msgColorBG }">
+                <span [ngStyle]="{'color': msgColorText }">
+                  {{msg.createdAt | date:"shortTime"}} :   {{msg.content}}
+                </span>
+              </div>
+              <p class="float-right" style="margin-left:1vw;" >
+                <img src="{{msg.userPhoto}}" alt="PP"><br>
+                {{msg.userName}}
+              </p>
+            </div><br>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </ng-container>
+  </div>
+  <hr>
+  <div class="form" >
+    <input class="form-control" [(ngModel)]="newMsg" (keydown.enter)="submit()" placeHolder="type enter to send">
+    <button (click)="submit()" class="btn btn-success" > Send</button>
+  </div>
+</div>

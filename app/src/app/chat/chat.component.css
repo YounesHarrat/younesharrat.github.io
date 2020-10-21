@@ -1,0 +1,56 @@
+.userprofile btn{
+  max-width:50px;
+}
+
+.chatContainer{
+  min-width: 800px;
+}
+
+.mes{
+  border-radius: 25px;
+  color:black;
+  border: solid 1px black;
+  box-shadow: 4px 4px 4px black;
+  text-align: left;
+  padding: 10px;
+  margin:auto;
+}
+
+#MyChat{
+  min-width: 50vw;
+  height:450px;
+  overflow: auto;
+  background-color: lightblue;
+}
+
+.message{
+  width: auto;
+  color:black;
+  border-radius: 25px;
+  margin: auto;
+  padding: 0;
+  text-align: left;
+}
+
+.btn-success{
+  width:100%;
+}
+
+img{
+  border-radius: 150px;
+  width: 30px;
+  display:inline-block;
+}
+
+.cmdP {
+  margin:0 2vw 0 2vw;
+}
+
+.colblock {
+  border-radius: 100%;
+  box-shadow: 3px 3px 0;
+  margin:auto;
+  width:2.5vw;
+  height:2.5vw;
+  border:black solid 1px;
+}

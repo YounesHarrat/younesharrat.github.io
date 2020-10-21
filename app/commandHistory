@@ -1,0 +1,36 @@
+Firebase Firestore Angular Bootstrap .
+
+ng new FireChatNG
+
+npm i firebase @angular/fire bootstrap jquery
+
+ng g service auth
+
+ng g service chat
+
+ng g component chat
+
+-- ne pas oublier d'ajouter bootstrap et jquery dans angular.json
+
+cp cv this in angular.json
+
+<<
+
+"styles": [
+  "./node_modules/bootstrap/dist/css/bootstrap.css",
+  "src/styles.css"
+],
+"scripts": [
+  "./node_modules/jquery/dist/jquery.js",
+  "./node_modules/bootstrap/dist/js/bootstrap.js"
+]
+
+>>
+
+cp cv auth.service de PManager with google account
+
+create firebase project : FireChatNG ->
+Connect the app to Firebase : through environment.ts in the AppComponent , add firebase config
+set the authentification process : using google account , @angular/fire AngularFireAuth service
+set a HomePage which shows the user profil information and his chatsCollection
+set the routes in app-routing , add an access to /chats with a specific id 
