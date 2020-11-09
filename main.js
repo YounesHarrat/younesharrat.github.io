@@ -857,9 +857,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _user_chats_user_chats_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./user-chats/user-chats.component */ "WAb2");
 /* harmony import */ var _youtube_player_youtube_player_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./youtube-player/youtube-player.component */ "cZxl");
 /* harmony import */ var _audio_player_audio_player_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./audio-player/audio-player.component */ "tnGF");
-/* harmony import */ var angular_emojify__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! angular-emojify */ "5EyG");
-/* harmony import */ var _ctrl_ngx_emoji_mart__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @ctrl/ngx-emoji-mart */ "KN7V");
-/* harmony import */ var _matter_game_matter_game_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./matter-game/matter-game.component */ "/K+B");
+/* harmony import */ var _matter_game_matter_game_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./matter-game/matter-game.component */ "/K+B");
+/* harmony import */ var angular_emojify__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! angular-emojify */ "5EyG");
+/* harmony import */ var _ctrl_ngx_emoji_mart__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @ctrl/ngx-emoji-mart */ "KN7V");
+/* harmony import */ var _angular_youtube_player__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/youtube-player */ "TIDI");
 
 
 
@@ -876,6 +877,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+//not used
+
+//actually used
 
 
 
@@ -891,8 +895,9 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector
             _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormsModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_8__["ReactiveFormsModule"],
             _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FontAwesomeModule"],
-            angular_emojify__WEBPACK_IMPORTED_MODULE_15__["EmojifyModule"],
-            _ctrl_ngx_emoji_mart__WEBPACK_IMPORTED_MODULE_16__["PickerModule"]
+            angular_emojify__WEBPACK_IMPORTED_MODULE_16__["EmojifyModule"],
+            _ctrl_ngx_emoji_mart__WEBPACK_IMPORTED_MODULE_17__["PickerModule"],
+            _angular_youtube_player__WEBPACK_IMPORTED_MODULE_18__["YouTubePlayerModule"]
         ]] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"],
         _chat_chat_component__WEBPACK_IMPORTED_MODULE_6__["ChatComponent"],
@@ -902,12 +907,13 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector
         _user_chats_user_chats_component__WEBPACK_IMPORTED_MODULE_12__["UserChatsComponent"],
         _youtube_player_youtube_player_component__WEBPACK_IMPORTED_MODULE_13__["YoutubePlayerComponent"],
         _audio_player_audio_player_component__WEBPACK_IMPORTED_MODULE_14__["AudioPlayerComponent"],
-        _matter_game_matter_game_component__WEBPACK_IMPORTED_MODULE_17__["MatterGameComponent"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
+        _matter_game_matter_game_component__WEBPACK_IMPORTED_MODULE_15__["MatterGameComponent"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
         _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"], _angular_fire__WEBPACK_IMPORTED_MODULE_4__["AngularFireModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormsModule"],
         _angular_forms__WEBPACK_IMPORTED_MODULE_8__["ReactiveFormsModule"],
         _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FontAwesomeModule"],
-        angular_emojify__WEBPACK_IMPORTED_MODULE_15__["EmojifyModule"],
-        _ctrl_ngx_emoji_mart__WEBPACK_IMPORTED_MODULE_16__["PickerModule"]] }); })();
+        angular_emojify__WEBPACK_IMPORTED_MODULE_16__["EmojifyModule"],
+        _ctrl_ngx_emoji_mart__WEBPACK_IMPORTED_MODULE_17__["PickerModule"],
+        _angular_youtube_player__WEBPACK_IMPORTED_MODULE_18__["YouTubePlayerModule"]] }); })();
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](AppModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
         args: [{
@@ -920,7 +926,7 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector
                     _user_chats_user_chats_component__WEBPACK_IMPORTED_MODULE_12__["UserChatsComponent"],
                     _youtube_player_youtube_player_component__WEBPACK_IMPORTED_MODULE_13__["YoutubePlayerComponent"],
                     _audio_player_audio_player_component__WEBPACK_IMPORTED_MODULE_14__["AudioPlayerComponent"],
-                    _matter_game_matter_game_component__WEBPACK_IMPORTED_MODULE_17__["MatterGameComponent"]
+                    _matter_game_matter_game_component__WEBPACK_IMPORTED_MODULE_15__["MatterGameComponent"]
                 ],
                 imports: [
                     _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -930,8 +936,9 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector
                     _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormsModule"],
                     _angular_forms__WEBPACK_IMPORTED_MODULE_8__["ReactiveFormsModule"],
                     _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__["FontAwesomeModule"],
-                    angular_emojify__WEBPACK_IMPORTED_MODULE_15__["EmojifyModule"],
-                    _ctrl_ngx_emoji_mart__WEBPACK_IMPORTED_MODULE_16__["PickerModule"]
+                    angular_emojify__WEBPACK_IMPORTED_MODULE_16__["EmojifyModule"],
+                    _ctrl_ngx_emoji_mart__WEBPACK_IMPORTED_MODULE_17__["PickerModule"],
+                    _angular_youtube_player__WEBPACK_IMPORTED_MODULE_18__["YouTubePlayerModule"]
                 ],
                 providers: [],
                 bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]]
@@ -1061,22 +1068,50 @@ __webpack_require__.r(__webpack_exports__);
 
 class YoutubePlayerComponent {
     constructor() {
-        let input = document.querySelector('input#search');
-        let player = document.querySelector('iframe#ytb');
     }
     ngOnInit() {
+        this.input = document.querySelector('input#search');
+        this.player = document.querySelector('div#player');
+        this.list = document.querySelector('ul#videoIdList');
         this.init();
     }
     init() {
+        console.log(this.player);
         this.input.addEventListener('keyup', (event) => {
-            this.url = this.input.value;
-            console.log(this.verif());
+            if (this.input.value != null) {
+                this.url = this.input.value;
+            }
+            console.log(this.input.value);
         });
-        console.log(this.player.getAttribute('src'));
+    }
+    onYouTubeIframeAPIReady() {
+        this.player = new YT.Player('player', {
+            height: '360',
+            width: '640',
+            videoId: this.url,
+            playerVars: { 'autoplay': 1, 'controls': 1 },
+            events: {
+                'onReady': this.onPlayerReady,
+            }
+        });
+    }
+    onPlayerReady(event) {
+        event.target.playVideo();
+    }
+    addToList() {
+        let pocket = document.createElement('li');
+        pocket.textContent = this.url;
+        console.log('bim');
+        this.list.appendChild(pocket);
+    }
+    getThatVideo() {
+        this.onYouTubeIframeAPIReady();
+        console.log(this.player);
     }
     verif() {
         let got = false;
-        fetch(this.url, {
+        let uRI = "https://www.youtube.com/watch?v=" + this.url;
+        fetch(uRI, {
             method: 'GET',
             headers: {
                 'Access-Control-Allow-Origin': '*',
@@ -1094,13 +1129,37 @@ class YoutubePlayerComponent {
     }
 }
 YoutubePlayerComponent.ɵfac = function YoutubePlayerComponent_Factory(t) { return new (t || YoutubePlayerComponent)(); };
-YoutubePlayerComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: YoutubePlayerComponent, selectors: [["app-youtube-player"]], decls: 4, vars: 0, consts: [["id", "search", "type", "text", "placeholder", "youtube video url"], ["id", "player"], ["src", "https://www.youtube.com/watch?v=xVNnBeVrD0o&t=1s", "frameborder", "0"]], template: function YoutubePlayerComponent_Template(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "input", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "player");
+YoutubePlayerComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: YoutubePlayerComponent, selectors: [["app-youtube-player"]], decls: 18, vars: 0, consts: [["id", "search", "type", "text", "placeholder", "youtube video url"], [3, "click"], ["id", "player"], [1, "vidList", "container"], ["id", "videoIdList"]], template: function YoutubePlayerComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "h2");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "How to Use ?");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "iframe", 2);
-    } }, styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3lvdXR1YmUtcGxheWVyL3lvdXR1YmUtcGxheWVyLmNvbXBvbmVudC5jc3MifQ== */"] });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "b");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "https://www.youtube.com/watch?v=KBvsuL8vARY");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](5, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "\nSee that url ? i need you to give me only the part after \"v=\" ,\njust put it into the input , thank you");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](7, "input", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "button", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function YoutubePlayerComponent_Template_button_click_8_listener() { return ctx.getThatVideo(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "Search on youtube");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "div", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, "player : ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "div", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "button", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function YoutubePlayerComponent_Template_button_click_13_listener() { return ctx.addToList(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, "Add to your Favorites");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "ul", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "li");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](17, "HjxZYiTpU3k");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } }, styles: ["#ytbP[_ngcontent-%COMP%]{\r\n    min-width: 500px;\r\n    min-height: 50vh;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAveW91dHViZS1wbGF5ZXIveW91dHViZS1wbGF5ZXIuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtJQUNJLGdCQUFnQjtJQUNoQixnQkFBZ0I7QUFDcEIiLCJmaWxlIjoic3JjL2FwcC95b3V0dWJlLXBsYXllci95b3V0dWJlLXBsYXllci5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiI3l0YlB7XHJcbiAgICBtaW4td2lkdGg6IDUwMHB4O1xyXG4gICAgbWluLWhlaWdodDogNTB2aDtcclxufSJdfQ== */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](YoutubePlayerComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
@@ -1395,7 +1454,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const routes = [
-    { path: '', component: _home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"] },
+    { path: '', component: _home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"], pathMatch: 'full' },
     { path: 'home', component: _home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"], pathMatch: 'full' },
     { path: 'chats/:id', component: _chat_chat_component__WEBPACK_IMPORTED_MODULE_2__["ChatComponent"], pathMatch: 'full' },
     { path: 'userChats', component: _user_chats_user_chats_component__WEBPACK_IMPORTED_MODULE_5__["UserChatsComponent"], pathMatch: 'full' },
