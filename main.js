@@ -1129,13 +1129,13 @@ class YoutubePlayerComponent {
     }
 }
 YoutubePlayerComponent.ɵfac = function YoutubePlayerComponent_Factory(t) { return new (t || YoutubePlayerComponent)(); };
-YoutubePlayerComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: YoutubePlayerComponent, selectors: [["app-youtube-player"]], decls: 18, vars: 0, consts: [["id", "search", "type", "text", "placeholder", "youtube video url"], [3, "click"], ["id", "player"], [1, "vidList", "container"], ["id", "videoIdList"]], template: function YoutubePlayerComponent_Template(rf, ctx) { if (rf & 1) {
+YoutubePlayerComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: YoutubePlayerComponent, selectors: [["app-youtube-player"]], decls: 18, vars: 0, consts: [["id", "search", "type", "text", "placeholder", "youtube video url"], [3, "click"], [1, "vidList", "container", "d-flex", "flex-column"], ["id", "player"], ["id", "videoIdList"]], template: function YoutubePlayerComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "h2");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "How to Use ?");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "p");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "b");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "https://www.youtube.com/watch?v=KBvsuL8vARY");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "https://www.youtube.com/watch?v=HjxZYiTpU3k");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](5, "br");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "\nSee that url ? i need you to give me only the part after \"v=\" ,\njust put it into the input , thank you");
@@ -1146,9 +1146,9 @@ YoutubePlayerComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵd
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "Search on youtube");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "div", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, "player : ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "div", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12, "player : ");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "div", 3);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "button", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function YoutubePlayerComponent_Template_button_click_13_listener() { return ctx.addToList(); });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, "Add to your Favorites");
