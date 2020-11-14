@@ -302,9 +302,9 @@ class AnimaComponent {
     constructor() {
         this.addLight = () => {
             const color = 0xFFFFFF;
-            const intensity = 1.1;
+            const intensity = 1;
             const light = new three__WEBPACK_IMPORTED_MODULE_1__["DirectionalLight"](color, intensity);
-            light.position.set(-1, 2, 4);
+            light.position.set(0, 20, 20);
             this.scene.add(light);
         };
         this.addLightParam = (color, intensity, [x, y, z]) => {
@@ -330,10 +330,14 @@ class AnimaComponent {
                 this.setObject(geometrie3,materiel,25)
                 this.setObject(geometrie3,materiel,-25)
             */
-            this.setObject(geometrie4, materiel, -40);
-            this.setObject(geometrie4, materiel, 40);
-            this.setMesh(this.createSphere(25), 0);
-            this.setMesh(this.createCloud(25), 0);
+            //this.setObject(geometrie4,materiel,-40)
+            //this.setObject(geometrie4,materiel,50)
+            let sunUrl = '../../../assets/images/2k_sun.jpg';
+            this.setMesh(this.createSphere(2200, sunUrl, ''), -3000);
+            this.setMesh(this.createSphere(30), 10);
+            this.setMesh(this.createCloud(20), 10);
+            let moonUrl = '../../../assets/images/2k_moon.jpg';
+            this.setMesh(this.createSphere(7, moonUrl, ''), 50);
             this.scene.add(this.forme);
         };
         this.setMesh = (mesh, posX) => {
@@ -366,11 +370,11 @@ class AnimaComponent {
             var cube = new three__WEBPACK_IMPORTED_MODULE_1__["Mesh"](geometry, material);
             return cube;
         };
-        this.createSphere = function (radius) {
+        this.createSphere = function (radius, mapUrl = '../../../assets/images/earthmap4k.jpg', bumpMapUrl = '../../../assets/images/earthbump4k.jpg') {
             var radius = radius || 1;
             let map, bumpMap;
-            var mapUrl = "../../../assets/images/earthmap4k.jpg";
-            var bumpMapUrl = "../../../assets/images/earthbump4k.jpg";
+            var mapUrl = mapUrl;
+            var bumpMapUrl = bumpMapUrl;
             // widthSegments — number of horizontal segments. Minimum value is 3, and the default is 8.
             // heightSegments — number of vertical segments. Minimum value is 2, and the default is 6.
             var globeGeometry = new three__WEBPACK_IMPORTED_MODULE_1__["SphereGeometry"](radius, 32, 16);
@@ -401,15 +405,20 @@ class AnimaComponent {
         this.scene = new three__WEBPACK_IMPORTED_MODULE_1__["Scene"]();
         this.camera = new three__WEBPACK_IMPORTED_MODULE_1__["PerspectiveCamera"](35, window.innerWidth / window.innerHeight, 0.2, 3000);
         this.camera.position.z = 100;
+        this.threeDWindow = document.querySelector('#animaComponent');
         this.rendu = new three__WEBPACK_IMPORTED_MODULE_1__["WebGLRenderer"]();
-        this.rendu.setClearColor('lightblack');
+        const loader = new three__WEBPACK_IMPORTED_MODULE_1__["TextureLoader"]();
+        let texture = loader.load('../../../assets/images/2k_stars_milky_way.jpg');
+        this.scene.background = texture;
+        //this.rendu.setClearColor('lightblack');
         this.rendu.setSize(window.innerWidth / 1.2, window.innerHeight / 1.2);
-        this.threeDWindow = document.getElementById('animaComponent');
         this.threeDWindow.appendChild(this.rendu.domElement);
         this.addLight();
-        this.addLightParam('white', 1.5, [1, -2, -4]);
+        this.addLightParam('white', 1.5, [-2010, 0, 0]);
         this.deposerCreerForme();
+        //rotate the planets
         this.animer();
+        //manage mouse Controls
         this.control = new three_examples_jsm_controls_OrbitControls__WEBPACK_IMPORTED_MODULE_2__["OrbitControls"](this.camera, this.threeDWindow);
         this.control.update();
         this.renderer();
@@ -418,7 +427,7 @@ class AnimaComponent {
 AnimaComponent.ɵfac = function AnimaComponent_Factory(t) { return new (t || AnimaComponent)(); };
 AnimaComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AnimaComponent, selectors: [["app-anima"]], decls: 1, vars: 0, consts: [["id", "animaComponent"]], template: function AnimaComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "div", 0);
-    } }, styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvYW5pbWEvYW5pbWEuY29tcG9uZW50LmNzcyJ9 */"] });
+    } }, styles: ["#animaComponent[_ngcontent-%COMP%]{\r\n    background-image: url('2k_stars_milky_way.jpg') no-repeat center center;\r\n    \r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9hbmltYS9hbmltYS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksdUVBQThGOztBQUVsRyIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudHMvYW5pbWEvYW5pbWEuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIiNhbmltYUNvbXBvbmVudHtcclxuICAgIGJhY2tncm91bmQtaW1hZ2U6IHVybCgnLi4vLi4vLi4vYXNzZXRzL2ltYWdlcy8ya19zdGFyc19taWxreV93YXkuanBnJykgbm8tcmVwZWF0IGNlbnRlciBjZW50ZXI7XHJcbiAgICBcclxufSJdfQ== */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](AnimaComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
@@ -513,11 +522,13 @@ function NavbarComponent_ng_template_2_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "button", 10);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](8, "i", 11);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "button", 12);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](10, "i", 13);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "button", 14);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](12, "i", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "ul", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "button", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](11, "i", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "button", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](13, "i", 14);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
@@ -533,16 +544,16 @@ class NavbarComponent {
     }
 }
 NavbarComponent.ɵfac = function NavbarComponent_Factory(t) { return new (t || NavbarComponent)(); };
-NavbarComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: NavbarComponent, selectors: [["app-navbar"]], decls: 4, vars: 2, consts: [[1, "navBar"], ["id", "cpBar", 4, "ngIf", "ngIfElse"], ["nav", ""], ["id", "cpBar"], [1, "btn", "bg-light", 3, "click"], [1, "fa-bars", "fa"], ["routerLink", "/home", 1, "btn", "bg-light"], [1, "fa-home", "fa"], ["routerLink", "/userChats", 1, "btn", "bg-light"], [1, "fa-fire", "fa"], ["routerLink", "/youtubePlayer", 1, "btn", "bg-light"], [1, "fa-youtube-play", "fa"], ["routerLink", "/MatterJs", 1, "btn", "bg-light"], [1, "fa", "fa-gamepad"], ["routerLink", "/anima", 1, "btn", "bg-light"]], template: function NavbarComponent_Template(rf, ctx) { if (rf & 1) {
+NavbarComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: NavbarComponent, selectors: [["app-navbar"]], decls: 4, vars: 2, consts: [[1, "navBar"], ["id", "cpBar", 4, "ngIf", "ngIfElse"], ["nav", ""], ["id", "cpBar"], [1, "btn", "bg-light", 3, "click"], [1, "fa-bars", "fa"], ["routerLink", "/home", 1, "btn", "bg-light"], [1, "fa-home", "fa"], ["routerLink", "/userChats", 1, "btn", "bg-light"], [1, "fa-fire", "fa"], ["routerLink", "/youtubePlayer", 1, "btn", "bg-light"], [1, "fa-youtube-play", "fa"], ["id", "cpBarRight"], ["routerLink", "/skybox", 1, "btn", "bg-light"], [1, "fa", "fa-gamepad"], ["routerLink", "/anima", 1, "btn", "bg-light"]], template: function NavbarComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, NavbarComponent_ul_1_Template, 3, 0, "ul", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, NavbarComponent_ng_template_2_Template, 13, 0, "ng-template", null, 2, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplateRefExtractor"]);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, NavbarComponent_ng_template_2_Template, 14, 0, "ng-template", null, 2, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplateRefExtractor"]);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     } if (rf & 2) {
         const _r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](3);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.open)("ngIfElse", _r1);
-    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["NgIf"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterLink"]], styles: ["@media screen and (min-width:950px){\r\n\r\n    #cpBar[_ngcontent-%COMP%]{\r\n        max-width: -webkit-min-content;\r\n        max-width: min-content;\r\n        position: fixed;\r\n        margin-top:25vh;\r\n        left:0px;\r\n        display: flex;\r\n        flex-direction: column;\r\n    }\r\n    \r\n    button[_ngcontent-%COMP%]{\r\n        width:-webkit-fit-content;\r\n        width:-moz-fit-content;\r\n        width:fit-content;\r\n        height: -webkit-fit-content;\r\n        height: -moz-fit-content;\r\n        height: fit-content;\r\n        color: rgb(221, 54, 24);\r\n        margin-bottom: 4vh;\r\n    }\r\n    \r\n    i[_ngcontent-%COMP%]{\r\n    width:4vh;\r\n    padding:1vh;\r\n    border-radius: 25rem;\r\n    background-color: rgba(223, 163, 0, .612);\r\n    }\r\n    \r\n}\r\n\r\n@media screen and (max-width:950px){\r\n    .navBar[_ngcontent-%COMP%]{padding-top: 1vh;}\r\n#cpBar[_ngcontent-%COMP%]{\r\n    max-width: -webkit-min-content;\r\n    max-width: min-content;\r\n    position: fixed;\r\n    margin:auto;\r\n    display: flex;\r\n    flex-direction: row;   \r\n}\r\n\r\nbutton[_ngcontent-%COMP%]{\r\n    width:-webkit-fit-content;\r\n    width:-moz-fit-content;\r\n    width:fit-content;\r\n    height: -webkit-fit-content;\r\n    height: -moz-fit-content;\r\n    height: fit-content;\r\n    color: rgb(221, 54, 24);\r\n    margin-right: 4vh;\r\n}\r\n\r\ni[_ngcontent-%COMP%]{\r\nwidth:4vh;\r\npadding:1vh;\r\nborder-radius: 25vh;\r\nbackground-color: rgba(223, 163, 0, .612);\r\n}\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2hhcmVkL25hdmJhci9uYXZiYXIuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQ0E7O0lBRUk7UUFDSSw4QkFBc0I7UUFBdEIsc0JBQXNCO1FBQ3RCLGVBQWU7UUFDZixlQUFlO1FBQ2YsUUFBUTtRQUNSLGFBQWE7UUFDYixzQkFBc0I7SUFDMUI7O0lBRUE7UUFDSSx5QkFBaUI7UUFBakIsc0JBQWlCO1FBQWpCLGlCQUFpQjtRQUNqQiwyQkFBbUI7UUFBbkIsd0JBQW1CO1FBQW5CLG1CQUFtQjtRQUNuQix1QkFBdUI7UUFDdkIsa0JBQWtCO0lBQ3RCOztJQUVBO0lBQ0EsU0FBUztJQUNULFdBQVc7SUFDWCxvQkFBb0I7SUFDcEIseUNBQXlDO0lBQ3pDOztBQUVKOztBQUVBO0lBQ0ksUUFBUSxnQkFBZ0IsQ0FBQztBQUM3QjtJQUNJLDhCQUFzQjtJQUF0QixzQkFBc0I7SUFDdEIsZUFBZTtJQUNmLFdBQVc7SUFDWCxhQUFhO0lBQ2IsbUJBQW1CO0FBQ3ZCOztBQUVBO0lBQ0kseUJBQWlCO0lBQWpCLHNCQUFpQjtJQUFqQixpQkFBaUI7SUFDakIsMkJBQW1CO0lBQW5CLHdCQUFtQjtJQUFuQixtQkFBbUI7SUFDbkIsdUJBQXVCO0lBQ3ZCLGlCQUFpQjtBQUNyQjs7QUFFQTtBQUNBLFNBQVM7QUFDVCxXQUFXO0FBQ1gsbUJBQW1CO0FBQ25CLHlDQUF5QztBQUN6QztBQUNBIiwiZmlsZSI6InNyYy9hcHAvc2hhcmVkL25hdmJhci9uYXZiYXIuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIlxyXG5AbWVkaWEgc2NyZWVuIGFuZCAobWluLXdpZHRoOjk1MHB4KXtcclxuXHJcbiAgICAjY3BCYXJ7XHJcbiAgICAgICAgbWF4LXdpZHRoOiBtaW4tY29udGVudDtcclxuICAgICAgICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgICAgICAgbWFyZ2luLXRvcDoyNXZoO1xyXG4gICAgICAgIGxlZnQ6MHB4O1xyXG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICAgICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcclxuICAgIH1cclxuICAgIFxyXG4gICAgYnV0dG9ue1xyXG4gICAgICAgIHdpZHRoOmZpdC1jb250ZW50O1xyXG4gICAgICAgIGhlaWdodDogZml0LWNvbnRlbnQ7XHJcbiAgICAgICAgY29sb3I6IHJnYigyMjEsIDU0LCAyNCk7XHJcbiAgICAgICAgbWFyZ2luLWJvdHRvbTogNHZoO1xyXG4gICAgfVxyXG4gICAgXHJcbiAgICBpe1xyXG4gICAgd2lkdGg6NHZoO1xyXG4gICAgcGFkZGluZzoxdmg7XHJcbiAgICBib3JkZXItcmFkaXVzOiAyNXJlbTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMjIzLCAxNjMsIDAsIC42MTIpO1xyXG4gICAgfVxyXG4gICAgXHJcbn1cclxuXHJcbkBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6OTUwcHgpe1xyXG4gICAgLm5hdkJhcntwYWRkaW5nLXRvcDogMXZoO31cclxuI2NwQmFye1xyXG4gICAgbWF4LXdpZHRoOiBtaW4tY29udGVudDtcclxuICAgIHBvc2l0aW9uOiBmaXhlZDtcclxuICAgIG1hcmdpbjphdXRvO1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGZsZXgtZGlyZWN0aW9uOiByb3c7ICAgXHJcbn1cclxuXHJcbmJ1dHRvbntcclxuICAgIHdpZHRoOmZpdC1jb250ZW50O1xyXG4gICAgaGVpZ2h0OiBmaXQtY29udGVudDtcclxuICAgIGNvbG9yOiByZ2IoMjIxLCA1NCwgMjQpO1xyXG4gICAgbWFyZ2luLXJpZ2h0OiA0dmg7XHJcbn1cclxuXHJcbml7XHJcbndpZHRoOjR2aDtcclxucGFkZGluZzoxdmg7XHJcbmJvcmRlci1yYWRpdXM6IDI1dmg7XHJcbmJhY2tncm91bmQtY29sb3I6IHJnYmEoMjIzLCAxNjMsIDAsIC42MTIpO1xyXG59XHJcbn0iXX0= */"] });
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["NgIf"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterLink"]], styles: ["@media screen and (min-width:950px){\r\n\r\n    #cpBar[_ngcontent-%COMP%]{\r\n        max-width: -webkit-min-content;\r\n        max-width: min-content;\r\n        position: fixed;\r\n        margin-top:25vh;\r\n        left:0px;\r\n        display: flex;\r\n        flex-direction: column;\r\n    }\r\n\r\n    #cpBarRight[_ngcontent-%COMP%]{\r\n        max-width: -webkit-min-content;\r\n        max-width: min-content;\r\n        position: fixed;\r\n        margin-top:25vh;\r\n        right:2vw;\r\n        display: flex;\r\n        flex-direction: column;\r\n    }\r\n    \r\n    button[_ngcontent-%COMP%]{\r\n        width:-webkit-fit-content;\r\n        width:-moz-fit-content;\r\n        width:fit-content;\r\n        height: -webkit-fit-content;\r\n        height: -moz-fit-content;\r\n        height: fit-content;\r\n        color: rgb(221, 54, 24);\r\n        margin-bottom: 4vh;\r\n    }\r\n    \r\n    i[_ngcontent-%COMP%]{\r\n    width:4vh;\r\n    padding:1vh;\r\n    border-radius: 25rem;\r\n    background-color: rgba(223, 163, 0, .612);\r\n    }\r\n    \r\n}\r\n\r\n@media screen and (max-width:950px){\r\n    .navBar[_ngcontent-%COMP%]{padding-top: 1vh;}\r\n#cpBar[_ngcontent-%COMP%]{\r\n    max-width: -webkit-min-content;\r\n    max-width: min-content;\r\n    position: fixed;\r\n    margin:auto;\r\n    display: flex;\r\n    flex-direction: row;   \r\n}\r\n\r\nbutton[_ngcontent-%COMP%]{\r\n    width:-webkit-fit-content;\r\n    width:-moz-fit-content;\r\n    width:fit-content;\r\n    height: -webkit-fit-content;\r\n    height: -moz-fit-content;\r\n    height: fit-content;\r\n    color: rgb(221, 54, 24);\r\n    margin-right: 4vh;\r\n}\r\n\r\ni[_ngcontent-%COMP%]{\r\nwidth:4vh;\r\npadding:1vh;\r\nborder-radius: 25vh;\r\nbackground-color: rgba(223, 163, 0, .612);\r\n}\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2hhcmVkL25hdmJhci9uYXZiYXIuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQ0E7O0lBRUk7UUFDSSw4QkFBc0I7UUFBdEIsc0JBQXNCO1FBQ3RCLGVBQWU7UUFDZixlQUFlO1FBQ2YsUUFBUTtRQUNSLGFBQWE7UUFDYixzQkFBc0I7SUFDMUI7O0lBRUE7UUFDSSw4QkFBc0I7UUFBdEIsc0JBQXNCO1FBQ3RCLGVBQWU7UUFDZixlQUFlO1FBQ2YsU0FBUztRQUNULGFBQWE7UUFDYixzQkFBc0I7SUFDMUI7O0lBRUE7UUFDSSx5QkFBaUI7UUFBakIsc0JBQWlCO1FBQWpCLGlCQUFpQjtRQUNqQiwyQkFBbUI7UUFBbkIsd0JBQW1CO1FBQW5CLG1CQUFtQjtRQUNuQix1QkFBdUI7UUFDdkIsa0JBQWtCO0lBQ3RCOztJQUVBO0lBQ0EsU0FBUztJQUNULFdBQVc7SUFDWCxvQkFBb0I7SUFDcEIseUNBQXlDO0lBQ3pDOztBQUVKOztBQUVBO0lBQ0ksUUFBUSxnQkFBZ0IsQ0FBQztBQUM3QjtJQUNJLDhCQUFzQjtJQUF0QixzQkFBc0I7SUFDdEIsZUFBZTtJQUNmLFdBQVc7SUFDWCxhQUFhO0lBQ2IsbUJBQW1CO0FBQ3ZCOztBQUVBO0lBQ0kseUJBQWlCO0lBQWpCLHNCQUFpQjtJQUFqQixpQkFBaUI7SUFDakIsMkJBQW1CO0lBQW5CLHdCQUFtQjtJQUFuQixtQkFBbUI7SUFDbkIsdUJBQXVCO0lBQ3ZCLGlCQUFpQjtBQUNyQjs7QUFFQTtBQUNBLFNBQVM7QUFDVCxXQUFXO0FBQ1gsbUJBQW1CO0FBQ25CLHlDQUF5QztBQUN6QztBQUNBIiwiZmlsZSI6InNyYy9hcHAvc2hhcmVkL25hdmJhci9uYXZiYXIuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIlxyXG5AbWVkaWEgc2NyZWVuIGFuZCAobWluLXdpZHRoOjk1MHB4KXtcclxuXHJcbiAgICAjY3BCYXJ7XHJcbiAgICAgICAgbWF4LXdpZHRoOiBtaW4tY29udGVudDtcclxuICAgICAgICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgICAgICAgbWFyZ2luLXRvcDoyNXZoO1xyXG4gICAgICAgIGxlZnQ6MHB4O1xyXG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICAgICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcclxuICAgIH1cclxuXHJcbiAgICAjY3BCYXJSaWdodHtcclxuICAgICAgICBtYXgtd2lkdGg6IG1pbi1jb250ZW50O1xyXG4gICAgICAgIHBvc2l0aW9uOiBmaXhlZDtcclxuICAgICAgICBtYXJnaW4tdG9wOjI1dmg7XHJcbiAgICAgICAgcmlnaHQ6MnZ3O1xyXG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICAgICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcclxuICAgIH1cclxuICAgIFxyXG4gICAgYnV0dG9ue1xyXG4gICAgICAgIHdpZHRoOmZpdC1jb250ZW50O1xyXG4gICAgICAgIGhlaWdodDogZml0LWNvbnRlbnQ7XHJcbiAgICAgICAgY29sb3I6IHJnYigyMjEsIDU0LCAyNCk7XHJcbiAgICAgICAgbWFyZ2luLWJvdHRvbTogNHZoO1xyXG4gICAgfVxyXG4gICAgXHJcbiAgICBpe1xyXG4gICAgd2lkdGg6NHZoO1xyXG4gICAgcGFkZGluZzoxdmg7XHJcbiAgICBib3JkZXItcmFkaXVzOiAyNXJlbTtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMjIzLCAxNjMsIDAsIC42MTIpO1xyXG4gICAgfVxyXG4gICAgXHJcbn1cclxuXHJcbkBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6OTUwcHgpe1xyXG4gICAgLm5hdkJhcntwYWRkaW5nLXRvcDogMXZoO31cclxuI2NwQmFye1xyXG4gICAgbWF4LXdpZHRoOiBtaW4tY29udGVudDtcclxuICAgIHBvc2l0aW9uOiBmaXhlZDtcclxuICAgIG1hcmdpbjphdXRvO1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGZsZXgtZGlyZWN0aW9uOiByb3c7ICAgXHJcbn1cclxuXHJcbmJ1dHRvbntcclxuICAgIHdpZHRoOmZpdC1jb250ZW50O1xyXG4gICAgaGVpZ2h0OiBmaXQtY29udGVudDtcclxuICAgIGNvbG9yOiByZ2IoMjIxLCA1NCwgMjQpO1xyXG4gICAgbWFyZ2luLXJpZ2h0OiA0dmg7XHJcbn1cclxuXHJcbml7XHJcbndpZHRoOjR2aDtcclxucGFkZGluZzoxdmg7XHJcbmJvcmRlci1yYWRpdXM6IDI1dmg7XHJcbmJhY2tncm91bmQtY29sb3I6IHJnYmEoMjIzLCAxNjMsIDAsIC42MTIpO1xyXG59XHJcbn0iXX0= */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NavbarComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
@@ -577,12 +588,17 @@ class MatterGameComponent {
             let engine = matter_js__WEBPACK_IMPORTED_MODULE_1__["Engine"].create();
             let render = matter_js__WEBPACK_IMPORTED_MODULE_1__["Render"].create({
                 element: document.getElementById('matter'),
-                engine: engine
+                engine: engine,
+                options: {
+                    width: window.innerWidth,
+                    height: window.innerHeight,
+                    wireframes: false,
+                }
             });
             //set canvas width height
             render.canvas.setAttribute('width', "800");
             render.canvas.setAttribute('height', "600px");
-            let ground = matter_js__WEBPACK_IMPORTED_MODULE_1__["Bodies"].rectangle(600, 550, 1200, 60, { isStatic: true });
+            let ground = matter_js__WEBPACK_IMPORTED_MODULE_1__["Bodies"].rectangle(600, 550, 1200, 100, { isStatic: true });
             let wallLeft = matter_js__WEBPACK_IMPORTED_MODULE_1__["Bodies"].rectangle(0, 200, 60, 810, { isStatic: true });
             let wallRight = matter_js__WEBPACK_IMPORTED_MODULE_1__["Bodies"].rectangle(790, 200, 60, 810, { isStatic: true });
             let boxA = matter_js__WEBPACK_IMPORTED_MODULE_1__["Bodies"].rectangle(400, 200, 80, 80);
@@ -592,15 +608,21 @@ class MatterGameComponent {
                 mouse: mouse,
             });
             render.controller.mouse = mouse;
-            let stack = matter_js__WEBPACK_IMPORTED_MODULE_1__["Composites"].stack(500, 100, 14, 15, 0, 0, (x, y) => {
-                return matter_js__WEBPACK_IMPORTED_MODULE_1__["Bodies"].polygon(x, y, 8, 10);
+            let stack = matter_js__WEBPACK_IMPORTED_MODULE_1__["Composites"].stack(10, 10, 10, 10, 10, 10, (x, y) => {
+                return matter_js__WEBPACK_IMPORTED_MODULE_1__["Bodies"].polygon(x, y, 18, 15, {
+                    render: {
+                        fillStyle: 'goldenrod',
+                        strokeStyle: 'whitesmoke',
+                        lineWidth: 2,
+                    }
+                });
             });
             let supp = matter_js__WEBPACK_IMPORTED_MODULE_1__["Bodies"].rectangle(600, 400, 300, 20, { isStatic: true });
-            let ball = matter_js__WEBPACK_IMPORTED_MODULE_1__["Bodies"].circle(150, 450, 30);
+            let ball = matter_js__WEBPACK_IMPORTED_MODULE_1__["Bodies"].circle(250, 300, 30);
             let sling = matter_js__WEBPACK_IMPORTED_MODULE_1__["Constraint"].create({
-                pointA: { x: 150, y: 400 },
+                pointA: { x: 250, y: 300 },
                 bodyB: ball,
-                stiffness: 0.0056
+                stiffness: 0.005,
             });
             let firing = false;
             matter_js__WEBPACK_IMPORTED_MODULE_1__["Events"].on(mouseConstraint, 'enddrag', function (e) {
@@ -608,14 +630,14 @@ class MatterGameComponent {
                     firing = true;
             });
             matter_js__WEBPACK_IMPORTED_MODULE_1__["Events"].on(engine, 'afterUpdate', function () {
-                if (firing && Math.abs(ball.position.x - 150) < 20 && Math.abs(ball.position.y - 400) < 20) {
-                    ball = matter_js__WEBPACK_IMPORTED_MODULE_1__["Bodies"].circle(150, 450, 20);
+                if (firing && Math.abs(ball.position.x - 250) < 15 && Math.abs(ball.position.y - 300) < 15) {
+                    ball = matter_js__WEBPACK_IMPORTED_MODULE_1__["Bodies"].circle(250, 300, 30);
                     matter_js__WEBPACK_IMPORTED_MODULE_1__["World"].add(engine.world, ball);
                     sling.bodyB = ball;
                     firing = false;
                 }
             });
-            matter_js__WEBPACK_IMPORTED_MODULE_1__["World"].add(engine.world, [ground, supp, ball]);
+            matter_js__WEBPACK_IMPORTED_MODULE_1__["World"].add(engine.world, [ground, ball, wallLeft, wallRight]);
             matter_js__WEBPACK_IMPORTED_MODULE_1__["World"].add(engine.world, stack);
             matter_js__WEBPACK_IMPORTED_MODULE_1__["World"].add(engine.world, mouseConstraint);
             matter_js__WEBPACK_IMPORTED_MODULE_1__["World"].add(engine.world, sling);
@@ -792,6 +814,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_youtube_player_youtube_player_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/youtube-player/youtube-player.component */ "fZIn");
 /* harmony import */ var _shared_navbar_navbar_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./shared/navbar/navbar.component */ "EtQq");
 /* harmony import */ var _components_anima_anima_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/anima/anima.component */ "8/PQ");
+/* harmony import */ var _skybox3d_skybox3d_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./skybox3d/skybox3d.component */ "j3fi");
 
 
 
@@ -803,6 +826,7 @@ __webpack_require__.r(__webpack_exports__);
 //not used
 
 //actually used
+
 
 
 
@@ -840,7 +864,8 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector
         _components_youtube_player_youtube_player_component__WEBPACK_IMPORTED_MODULE_17__["YoutubePlayerComponent"],
         _components_audio_player_audio_player_component__WEBPACK_IMPORTED_MODULE_13__["AudioPlayerComponent"],
         _components_matter_game_matter_game_component__WEBPACK_IMPORTED_MODULE_14__["MatterGameComponent"],
-        _components_anima_anima_component__WEBPACK_IMPORTED_MODULE_19__["AnimaComponent"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
+        _components_anima_anima_component__WEBPACK_IMPORTED_MODULE_19__["AnimaComponent"],
+        _skybox3d_skybox3d_component__WEBPACK_IMPORTED_MODULE_20__["Skybox3dComponent"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
         _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"], _angular_fire__WEBPACK_IMPORTED_MODULE_4__["AngularFireModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormsModule"],
         _angular_forms__WEBPACK_IMPORTED_MODULE_6__["ReactiveFormsModule"],
         _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_7__["FontAwesomeModule"],
@@ -860,7 +885,8 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector
                     _components_youtube_player_youtube_player_component__WEBPACK_IMPORTED_MODULE_17__["YoutubePlayerComponent"],
                     _components_audio_player_audio_player_component__WEBPACK_IMPORTED_MODULE_13__["AudioPlayerComponent"],
                     _components_matter_game_matter_game_component__WEBPACK_IMPORTED_MODULE_14__["MatterGameComponent"],
-                    _components_anima_anima_component__WEBPACK_IMPORTED_MODULE_19__["AnimaComponent"]
+                    _components_anima_anima_component__WEBPACK_IMPORTED_MODULE_19__["AnimaComponent"],
+                    _skybox3d_skybox3d_component__WEBPACK_IMPORTED_MODULE_20__["Skybox3dComponent"]
                 ],
                 imports: [
                     _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -1359,6 +1385,90 @@ YoutubePlayerComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵd
 
 /***/ }),
 
+/***/ "j3fi":
+/*!************************************************!*\
+  !*** ./src/app/skybox3d/skybox3d.component.ts ***!
+  \************************************************/
+/*! exports provided: Skybox3dComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Skybox3dComponent", function() { return Skybox3dComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! three */ "Womt");
+/* harmony import */ var three_examples_jsm_controls_OrbitControls__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! three/examples/jsm/controls/OrbitControls */ "RyHr");
+
+
+
+
+class Skybox3dComponent {
+    constructor() {
+        this.animate = () => {
+            this.rendu.render(this.scene, this.camera);
+            requestAnimationFrame(this.animate);
+        };
+    }
+    ngOnInit() {
+        this.scene = new three__WEBPACK_IMPORTED_MODULE_1__["Scene"]();
+        this.camera = new three__WEBPACK_IMPORTED_MODULE_1__["PerspectiveCamera"](35, window.innerWidth / window.innerHeight, 0.2, 3000);
+        this.camera.position.set(0, 0, -500);
+        this.rendu = new three__WEBPACK_IMPORTED_MODULE_1__["WebGLRenderer"]({ antialias: true });
+        this.rendu.setSize(window.innerWidth / 1.2, window.innerHeight / 1.2);
+        this.page = document.querySelector('div#skybox');
+        this.page.appendChild(this.rendu.domElement);
+        //manage mouse Controls
+        this.control = new three_examples_jsm_controls_OrbitControls__WEBPACK_IMPORTED_MODULE_2__["OrbitControls"](this.camera, this.page);
+        this.control.update();
+        this.control.addEventListener('change', this.animate);
+        const loader = new three__WEBPACK_IMPORTED_MODULE_1__["TextureLoader"]();
+        let materialArray = [];
+        let texture_ft = loader.load('../../assets/skyboxes/zpos.png');
+        let texture_bk = loader.load('../../assets/skyboxes/zneg.png');
+        let texture_up = loader.load('../../assets/skyboxes/ypos.png');
+        let texture_dn = loader.load('../../assets/skyboxes/yneg.png');
+        let texture_rt = loader.load('../../assets/skyboxes/xneg.png');
+        let texture_lf = loader.load('../../assets/skyboxes/xpos.png');
+        materialArray.push(new three__WEBPACK_IMPORTED_MODULE_1__["MeshBasicMaterial"]({ map: texture_ft }));
+        materialArray.push(new three__WEBPACK_IMPORTED_MODULE_1__["MeshBasicMaterial"]({ map: texture_bk }));
+        materialArray.push(new three__WEBPACK_IMPORTED_MODULE_1__["MeshBasicMaterial"]({ map: texture_up }));
+        materialArray.push(new three__WEBPACK_IMPORTED_MODULE_1__["MeshBasicMaterial"]({ map: texture_dn }));
+        materialArray.push(new three__WEBPACK_IMPORTED_MODULE_1__["MeshBasicMaterial"]({ map: texture_rt }));
+        materialArray.push(new three__WEBPACK_IMPORTED_MODULE_1__["MeshBasicMaterial"]({ map: texture_lf }));
+        materialArray.push(new three__WEBPACK_IMPORTED_MODULE_1__["MeshBasicMaterial"]({ map: texture_ft }));
+        materialArray.push(new three__WEBPACK_IMPORTED_MODULE_1__["MeshBasicMaterial"]({ map: texture_bk }));
+        materialArray.push(new three__WEBPACK_IMPORTED_MODULE_1__["MeshBasicMaterial"]({ map: texture_up }));
+        materialArray.push(new three__WEBPACK_IMPORTED_MODULE_1__["MeshBasicMaterial"]({ map: texture_dn }));
+        materialArray.push(new three__WEBPACK_IMPORTED_MODULE_1__["MeshBasicMaterial"]({ map: texture_rt }));
+        materialArray.push(new three__WEBPACK_IMPORTED_MODULE_1__["MeshBasicMaterial"]({ map: texture_lf }));
+        for (let i = 0; i < 6; i++) {
+            materialArray[i].side = three__WEBPACK_IMPORTED_MODULE_1__["BackSide"];
+        }
+        for (let i = 6; i < 12; i++) {
+            materialArray[i].side = three__WEBPACK_IMPORTED_MODULE_1__["FrontSide"];
+        }
+        let skyboxGeo = new three__WEBPACK_IMPORTED_MODULE_1__["BoxGeometry"](1000, 1000, 1000);
+        let skybox = new three__WEBPACK_IMPORTED_MODULE_1__["Mesh"](skyboxGeo, materialArray);
+        this.scene.add(skybox);
+        this.rendu.render(this.scene, this.camera);
+    }
+}
+Skybox3dComponent.ɵfac = function Skybox3dComponent_Factory(t) { return new (t || Skybox3dComponent)(); };
+Skybox3dComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: Skybox3dComponent, selectors: [["app-skybox3d"]], decls: 1, vars: 0, consts: [["id", "skybox"]], template: function Skybox3dComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "div", 0);
+    } }, styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3NreWJveDNkL3NreWJveDNkLmNvbXBvbmVudC5jc3MifQ== */"] });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](Skybox3dComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+                selector: 'app-skybox3d',
+                templateUrl: './skybox3d.component.html',
+                styleUrls: ['./skybox3d.component.css']
+            }]
+    }], function () { return []; }, null); })();
+
+
+/***/ }),
+
 /***/ "lGQG":
 /*!******************************************!*\
   !*** ./src/app/services/auth.service.ts ***!
@@ -1588,6 +1698,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_user_chats_user_chats_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/user-chats/user-chats.component */ "dgf1");
 /* harmony import */ var _components_youtube_player_youtube_player_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/youtube-player/youtube-player.component */ "fZIn");
 /* harmony import */ var _shared_home_home_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./shared/home/home.component */ "ZEqh");
+/* harmony import */ var _skybox3d_skybox3d_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./skybox3d/skybox3d.component */ "j3fi");
+
 
 
 
@@ -1604,6 +1716,7 @@ const routes = [
     { path: 'userChats', component: _components_user_chats_user_chats_component__WEBPACK_IMPORTED_MODULE_5__["UserChatsComponent"], pathMatch: 'full' },
     { path: 'youtubePlayer', component: _components_youtube_player_youtube_player_component__WEBPACK_IMPORTED_MODULE_6__["YoutubePlayerComponent"], pathMatch: 'full' },
     { path: 'MatterJs', component: _components_matter_game_matter_game_component__WEBPACK_IMPORTED_MODULE_4__["MatterGameComponent"], pathMatch: 'full' },
+    { path: 'skybox', component: _skybox3d_skybox3d_component__WEBPACK_IMPORTED_MODULE_8__["Skybox3dComponent"], pathMatch: 'full' },
     { path: 'anima', component: _components_anima_anima_component__WEBPACK_IMPORTED_MODULE_2__["AnimaComponent"], pathMatch: 'full' }
 ];
 class AppRoutingModule {
